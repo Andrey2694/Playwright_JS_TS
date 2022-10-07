@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test'
 
-test.describe('Some API tests', () => {
-    test('getBooks', async ({ request }) => {
-        let get = await request.get('https://demoqa.com/BookStore/v1/Books');
-        expect(get.status()).toEqual(200);
+test.describe('Api tests', () => {
+    test('test book request', async ({ request }) => {
+        let booksResponse = await request.get('https://demoqa.com/BookStore/v1/Books');
+        expect(booksResponse.status()).toEqual(200);
         
-        let list = (await get.json())['books'];
+        let list = (await booksResponse.json())['books'];
         expect(list.length).toBeGreaterThanOrEqual(8)
     
         let listAuthors = list.map(n => n.author)

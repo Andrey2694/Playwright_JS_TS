@@ -66,6 +66,14 @@ const config: PlaywrightTestConfig = {
         // viewport: { width: 600, height: 720 }
       },
     },
+    {
+      name: 'chromium2',
+      testMatch: /.*.spec.ts/,
+      use: {
+        ...devices['Desktop Chrome'],    
+        viewport: {width: 1920, height: 1080}
+      },
+    },
 
     // {
     //   name: 'firefox',
