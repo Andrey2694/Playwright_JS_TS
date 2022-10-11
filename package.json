@@ -6,7 +6,9 @@
   "directories": {
     "test": "tests"
   },
-  "scripts": {},
+  "scripts": {
+    "local": "npx playwright test automationpractice.spec.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

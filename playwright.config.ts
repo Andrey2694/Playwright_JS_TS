@@ -1,15 +1,6 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
-
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 const config: PlaywrightTestConfig = {
   // globalSetup: require.resolve('./global-setup'),
   testDir: './tests',
@@ -45,27 +36,19 @@ const config: PlaywrightTestConfig = {
     // ignoreHTTPSErrors: true,
     video: 'on',
     screenshot: 'on',
-    storageState: 'resources/storageState.json'    
+    // storageState: 'resources/storageState.json'    
   },
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      testMatch: /.*.sanity.spec.ts/,
-      use: {
-        ...devices['Desktop Chrome'],
-        // viewport: { width: 600, height: 720 }
-      },
-    },
-    {
-      name: 'chromium2',
-      testMatch: /.*.smoke.spec.ts/,
-      use: {
-        ...devices['Desktop Chrome'],    
-        // viewport: { width: 600, height: 720 }
-      },
-    },
+    // {
+    //   name: 'chromium',
+    //   testMatch: /.*.sanity.spec.ts/,
+    //   use: {
+    //     ...devices['Desktop Chrome'],
+    //     // viewport: { width: 600, height: 720 }
+    //   },
+    // },
     {
       name: 'chromium2',
       testMatch: /.*.spec.ts/,
@@ -74,48 +57,6 @@ const config: PlaywrightTestConfig = {
         // viewport: {width: 1920, height: 1080}
       },
     },
-
-    // {
-    //   name: 'firefox',
-    //   use: {
-    //     ...devices['Desktop Firefox'],
-    //   },
-    // },
-
-    // {
-    //   name: 'webkit',
-    //   use: {
-    //     ...devices['Desktop Safari'],
-    //   },
-    // },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: {
-    //     ...devices['Pixel 5'],
-    //   },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: {
-    //     ...devices['iPhone 12'],
-    //   },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: {
-    //     channel: 'msedge',
-    //   },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: {
-    //     channel: 'chrome',
-    //   },
-    // },
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */

@@ -15,6 +15,5 @@ test.describe("UI tests for automationpractice website", () => {
         await dressPage.sizeSCheckBox.click();
         await dressPage.sortByButton.selectOption("price:asc");
         let a = 5;
-
     })
 })
