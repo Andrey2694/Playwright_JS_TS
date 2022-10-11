@@ -25,7 +25,7 @@ const config: PlaywrightTestConfig = {
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
+  forbidOnly: !process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 1 : 0,
   /* Opt out of parallel tests on CI. */
@@ -41,11 +41,11 @@ const config: PlaywrightTestConfig = {
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
-    headless: true,
+    headless: false,
     // ignoreHTTPSErrors: true,
     video: 'on',
     screenshot: 'on',
-    // storageState: './storageState.json'    
+    storageState: 'resources/storageState.json'    
   },
 
   /* Configure projects for major browsers */
@@ -71,7 +71,7 @@ const config: PlaywrightTestConfig = {
       testMatch: /.*.spec.ts/,
       use: {
         ...devices['Desktop Chrome'],    
-        viewport: {width: 1920, height: 1080}
+        // viewport: {width: 1920, height: 1080}
       },
     },
 

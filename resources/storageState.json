@@ -1,0 +1,15 @@
+{
+  "cookies": [
+    {
+      "name": "PrestaShop-a30a9934ef476d11b6cc3c983616e364",
+      "value": "1UA9f0IzHaWjh1LZJm6tqt7A%2BySqcGQm8JYVinz4ay2ihBl83Hm9SaNYoXvhaLuXECk%2BDPgOfrEKuNzDh9cvN9OdNcGKmKUQHF6uccehln9vHpVK96fWftu8sfEQv%2BYxAzlfONJOryx2NCZiPxMEWEV9dSSeIXm6wyikuGNK2AsZ04%2BxTruOrc5Ms5s1fljsYyD2OuZT56FSH%2BVcocfWPTfuEROgy92kZL9Vrzh87G5xrKpNyGAapIzc12Kd8PwkoTAPCPHOMAxSf4LA6%2Fn%2F61yx%2FDUn%2FReXM0B3si5SkqtzU5oJI24PPqJOvhZhXZwLxT3EWD4G4jRTMLnuAm2ImZJhUgUDQfOzmLtE08YigL1wmajilfRxrDl9V2NNekdT%2FJE7pLZl%2BkwJEhTnY%2Fq9qTX09oRRr%2FQoVfrtz1Yeu%2B4%3D000310",
+      "domain": ".automationpractice.com",
+      "path": "/",
+      "expires": 1667129447.619792,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}
