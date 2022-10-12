@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "local": "npx playwright test automationpractice.spec.ts"
+    "local": "npx playwright test automationpractice.spec.ts --config=playwrightMain.config.ts"
   },
   "keywords": [],
   "author": "",

@@ -6,7 +6,7 @@ import { DressPage } from '../pages/dress'
 
 test.describe("UI tests for automationpractice website", () => {
 
-    test("Test1", async ({ page }) => {
+    test("Add item to Cart", async ({ page }) => {
         const mainPage = new MainPage(page);
         const dressPage = new DressPage(page);
 
@@ -14,6 +14,14 @@ test.describe("UI tests for automationpractice website", () => {
         await mainPage.openCasualDressPage();
         await dressPage.sizeSCheckBox.click();
         await dressPage.sortByButton.selectOption("price:asc");
-        let a = 5;
+
+        await expect(dressPage.enableFiltersSizeS).toBeVisible();
+        await dressPage.dressItemContainer.hover();
+        await dressPage.addToCartButton.click();
+        await expect(dressPage.successfullyTitel).toBeVisible();
+    })
+
+    test("ss", async ({page}) => {
+        
     })
 })
