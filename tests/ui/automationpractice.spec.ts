@@ -6,10 +6,6 @@ import { CartPage } from '../pages/Cart'
 import { ScreenShots } from '../utils/screenshot'
 import dotenv from 'dotenv'
 
-import { parse } from 'csv-parse/sync';
-import fs from 'fs';
-import path from 'path';
-
 dotenv.config();
 
 test.use({ storageState: "resources/storageState.json" })
