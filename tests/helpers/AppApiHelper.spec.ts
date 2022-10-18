@@ -1,25 +1,25 @@
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
 dotenv.config();
 
 export class AppApiHelper {
 
     public static async addItemToCart(request) {
-        let count = 0;
+        const count = 0;
         let statusCode = null;
 
         do {
             statusCode = await this.sendRequestAddItemToCart(request);
         }
-        while (statusCode !== 200 && count < 5)
+        while (statusCode !== 200 && count < 5);
 
         return statusCode;
     }
 
     private static async sendRequestAddItemToCart(request) {
-        const cookie = require("../../resources/storageState.json")
-        let baseURL = process.env.URL;
-        let response = await request.post(`${baseURL}/index.php`, {
+        const cookie = require("../../resources/storageState.json");
+        const baseURL = process.env.URL;
+        const response = await request.post(`${baseURL}/index.php`, {
             headers: {
                 "Cookie": `${cookie.cookies[0].name}=${cookie.cookies[0].value}}`,
                 "Origin": baseURL,
@@ -33,9 +33,9 @@ export class AppApiHelper {
                 "ajax": "true",
                 "qty": "1",
                 "id_product": "3",
-                "token": "fa319f801ccb25fc9cceb41a84b11daa",
+                "token": "fa319f801ccb25fc9cceb41a84b11daa"
             }
-        })
+        });
         return response.status();
     }
 }

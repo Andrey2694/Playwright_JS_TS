@@ -1,24 +1,25 @@
-import { test, expect } from '../pom/CastomFixtures'
-import { AppApiHelper } from '../helpers/AppApiHelper.spec'
-import { Screenshots } from '../utils/Screenshots'
-import dotenv from 'dotenv'
+import { test, expect } from "../pom/CastomFixtures";
+import { AppApiHelper } from "../helpers/AppApiHelper.spec";
+import { Screenshots } from "../utils/Screenshots";
+import dotenv from "dotenv";
+import { MainPage } from "../pom/pages/Main";
 
 dotenv.config();
 
-test.use({ storageState: "resources/storageState.json" })
+test.use({ storageState: "resources/storageState.json" });
 
 test.describe("UI tests for automationpractice website", () => {
-    let mainPage: any;
+    let mainPage: MainPage;
 
     test.beforeEach(async ({ app }) => {
         mainPage = app.mainPage;
-    })
+    });
 
     test.afterAll(({ app }) => {
         app.closeBrowser();
-    })
+    });
     test("Add item to Cart", async ({ app }, testInfo) => {
-        let dressPage = app.dressPage;
+        const dressPage = app.dressPage;
 
         await mainPage.goto();
         await mainPage.openCasualDressPage();
@@ -30,10 +31,10 @@ test.describe("UI tests for automationpractice website", () => {
         await dressPage.dressItemContainer.hover();
         await dressPage.addToCartButton.click();
         await expect(dressPage.successfullyTitle).toBeVisible();
-    })
+    });
 
     test("add Item by API and buy it via Cart", async ({ app, request }) => {
-        let cartPage = app.cartPage;
+        const cartPage = app.cartPage;
         expect(await AppApiHelper.addItemToCart(request)).toEqual(200);
 
         await mainPage.goto();
@@ -48,10 +49,10 @@ test.describe("UI tests for automationpractice website", () => {
 
         await cartPage.shippingProcessButton.click();
         await cartPage.payByBankWireButton.click();
-        await expect(app.page).toHaveURL(/.*module=bankwire*/)
+        await expect(app.page).toHaveURL(/.*module=bankwire*/);
 
         await cartPage.paymentConfirmButton.click();
         await expect(cartPage.orderIsCompleteTitle).toBeVisible();
-    })
+    });
 
-})
+});

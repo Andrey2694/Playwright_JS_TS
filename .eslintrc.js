@@ -21,5 +21,7 @@ module.exports = {
     "rules": {
         "semi": ["error", "always"],
         "quotes": ["error", "double"],
-    },
+        "comma-dangle": ["error", "never"],
+        "@typescript-eslint/no-var-requires": 0
+    }
 };
