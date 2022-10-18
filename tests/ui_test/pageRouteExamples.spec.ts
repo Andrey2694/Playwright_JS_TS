@@ -1,4 +1,4 @@
-import { expect, test } from '../CastomFixtures';
+import { expect, test } from '../pom/CastomFixtures';
 
 test.describe('examples work with requests/responses', () => {
     test('abort all image requests', async ({ page }) => {

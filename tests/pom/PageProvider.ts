@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
-import { CartPage } from "./Cart";
-import { DressPage } from "./Dress";
-import { MainPage } from "./Main";
+import { CartPage } from "./pages/Cart";
+import { DressPage } from "./pages/Dress";
+import { MainPage } from "./pages/Main";
 
 export abstract class PageProvider {
     private _dressPage: DressPage | undefined;

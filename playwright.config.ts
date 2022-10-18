@@ -30,11 +30,11 @@ const config: PlaywrightTestConfig = {
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
-    trace: 'on',
+    trace: 'retain-on-failure',
     headless: true,
     // ignoreHTTPSErrors: true,
-    video: 'on',
-    screenshot: 'on',
+    video: 'retain-on-failure',
+    screenshot: 'only-on-failure',
     storageState: 'resources/storageState.json'    
   },
 

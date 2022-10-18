@@ -2,14 +2,14 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
-export class AutomationpracticeApiHelper {
+export class AppApiHelper {
 
-    static async addItemToCartByApi(request) {
+    public static async addItemToCart(request) {
         let count = 0;
         let statusCode = null;
 
         do {
-            statusCode = await AutomationpracticeApiHelper.sendRequestAddItemToCart(request);
+            statusCode = await this.sendRequestAddItemToCart(request);
         }
         while (statusCode !== 200 && count < 5)
 
@@ -19,7 +19,6 @@ export class AutomationpracticeApiHelper {
     private static async sendRequestAddItemToCart(request) {
         const cookie = require("../../resources/storageState.json")
         let baseURL = process.env.URL;
-
         let response = await request.post(`${baseURL}/index.php`, {
             headers: {
                 "Cookie": `${cookie.cookies[0].name}=${cookie.cookies[0].value}}`,

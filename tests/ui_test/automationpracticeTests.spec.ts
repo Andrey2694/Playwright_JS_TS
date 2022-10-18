@@ -1,6 +1,6 @@
-import { test, expect } from '../CastomFixtures'
-import { AutomationpracticeApiHelper } from '../helpers/automationpractice.spec'
-import { ScreenShots } from '../utils/screenshot'
+import { test, expect } from '../pom/CastomFixtures'
+import { AppApiHelper } from '../helpers/AppApiHelper.spec'
+import { Screenshots } from '../utils/Screenshots'
 import dotenv from 'dotenv'
 
 dotenv.config();
@@ -8,7 +8,7 @@ dotenv.config();
 test.use({ storageState: "resources/storageState.json" })
 
 test.describe("UI tests for automationpractice website", () => {
-    let mainPage;
+    let mainPage: any;
 
     test.beforeEach(async ({ app }) => {
         mainPage = app.mainPage;
@@ -18,7 +18,6 @@ test.describe("UI tests for automationpractice website", () => {
         app.closeBrowser();
     })
     test("Add item to Cart", async ({ app }, testInfo) => {
-        let mainPage = app.mainPage;
         let dressPage = app.dressPage;
 
         await mainPage.goto();
@@ -26,17 +25,16 @@ test.describe("UI tests for automationpractice website", () => {
         await dressPage.sizeSCheckBox.click();
         await dressPage.sortByButton.selectOption("price:asc");
         await expect(dressPage.enableFiltersSizeS).toBeVisible();
+        Screenshots.addFullSizeScreenshotToReport(app.page, testInfo);
 
         await dressPage.dressItemContainer.hover();
         await dressPage.addToCartButton.click();
-        await expect(dressPage.successfullyTitel).toBeVisible();
-        ScreenShots.takeFullSizeScreenshot(app.page, testInfo);
+        await expect(dressPage.successfullyTitle).toBeVisible();
     })
 
     test("add Item by API and buy it via Cart", async ({ app, request }) => {
         let cartPage = app.cartPage;
-
-        expect(await AutomationpracticeApiHelper.addItemToCartByApi(request)).toEqual(200);
+        expect(await AppApiHelper.addItemToCart(request)).toEqual(200);
 
         await mainPage.goto();
         await mainPage.cartButton.click();
@@ -46,7 +44,7 @@ test.describe("UI tests for automationpractice website", () => {
         await cartPage.summaryProcessButton.click();
         await cartPage.adressProcessButton.click();
         await cartPage.termsOfServiceCheckbox.check();
-        await expect(cartPage.termsOfServiceCheckbox.isChecked).toBeTruthy();
+        expect(cartPage.termsOfServiceCheckbox.isChecked()).toBeTruthy();
 
         await cartPage.shippingProcessButton.click();
         await cartPage.payByBankWireButton.click();
@@ -55,4 +53,5 @@ test.describe("UI tests for automationpractice website", () => {
         await cartPage.paymentConfirmButton.click();
         await expect(cartPage.orderIsCompleteTitle).toBeVisible();
     })
+
 })
