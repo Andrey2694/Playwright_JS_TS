@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const config: PlaywrightTestConfig = {
-  // globalSetup: require.resolve("./global-setup"),
+  globalSetup: require.resolve("./global-setup"),
   testDir: "./tests",
   /* Maximum time one test can run for. */
   timeout: 120 * 1000,
@@ -33,8 +33,8 @@ const config: PlaywrightTestConfig = {
     headless: true,
     // ignoreHTTPSErrors: true,
     video: "retain-on-failure",
-    screenshot: "only-on-failure"
-    // storageState: "resources/storageState.json"    
+    screenshot: "only-on-failure",
+    storageState: "resources/storageState.json"    
   },
 
   /* Configure projects for major browsers */

@@ -1,5 +1,4 @@
 import { BrowserContext, Locator, Page } from "@playwright/test";
-import { link } from "fs";
 import { PageProvider } from "./PageProvider";
 
 export class App extends PageProvider {
