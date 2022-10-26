@@ -66,4 +66,9 @@ test.describe("UI tests for automationpractice website", () => {
         await expect(app.page.locator("h1[dir='auto'] a", { hasText: "Selenium Framework" })).toBeVisible();
         await mainPage2.cartButton.click();
     });
+
+    test("screenshot comparisons", async ({ app }) => {
+        await app.cartPage.goto();
+        await expect(app.page).toHaveScreenshot("cartPageScreenshot.png");
+    });
 });
