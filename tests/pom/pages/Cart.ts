@@ -1,25 +1,17 @@
-import { Locator, Page } from "@playwright/test";
+import { Page } from "@playwright/test";
+import { BasePage } from "./BasePage";
 
-export class CartPage {
-    readonly page: Page;
-    readonly blousseItem: Locator;
-    readonly summaryProcessButton: Locator;
-    readonly adressProcessButton: Locator;
-    readonly shippingProcessButton: Locator;
-    readonly termsOfServiceCheckbox: Locator;
-    readonly payByBankWireButton: Locator;
-    readonly paymentConfirmButton: Locator;
-    readonly orderIsCompleteTitle: Locator;
+export class CartPage extends BasePage{
+    readonly blousseItem = this.page.locator("#cart_summary .product-name > a");
+    readonly summaryProcessButton = this.page.locator(".cart_navigation [title = 'Proceed to checkout']");
+    readonly adressProcessButton = this.page.locator("[name = 'processAddress']");
+    readonly termsOfServiceCheckbox = this.page.locator("#cgv");
+    readonly shippingProcessButton = this.page.locator("[name = 'processCarrier']");
+    readonly payByBankWireButton = this.page.locator("[title = 'Pay by bank wire']");
+    readonly paymentConfirmButton = this.page.locator("span", {hasText: "I confirm my order"});
+    readonly orderIsCompleteTitle = this.page.getByText("Your order on My Store is complete.");
 
-    constructor(page: Page) {
-        this.page = page;
-        this.blousseItem = page.locator("#cart_summary .product-name > a");
-        this.summaryProcessButton = page.locator(".cart_navigation [title = 'Proceed to checkout']");
-        this.adressProcessButton = page.locator("[name = 'processAddress']");
-        this.termsOfServiceCheckbox = page.locator("#cgv");
-        this.shippingProcessButton = page.locator("[name = 'processCarrier']");
-        this.payByBankWireButton = page.locator("[title = 'Pay by bank wire']");
-        this.paymentConfirmButton = page.locator("span", {hasText: "I confirm my order"});
-        this.orderIsCompleteTitle = page.getByText("Your order on My Store is complete.");
+    constructor(readonly page: Page) {
+        super(page, "?controller=order");
     }
 }

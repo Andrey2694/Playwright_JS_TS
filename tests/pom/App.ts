@@ -1,4 +1,5 @@
-import { BrowserContext, Page } from "@playwright/test";
+import { BrowserContext, Locator, Page } from "@playwright/test";
+import { link } from "fs";
 import { PageProvider } from "./PageProvider";
 
 export class App extends PageProvider {
@@ -9,5 +10,30 @@ export class App extends PageProvider {
 
     public async closeBrowser() {
         await this.page.close();
+    }
+
+    public async openNewBrowserPage() {
+        Object.keys(this).forEach((key: string) => {
+            if (key !== "browserContext") {
+                (this as any)[key] = undefined;
+            }
+        });
+
+        const newPage = await this.browserContext.newPage();
+        this.page = newPage;
+    }
+
+    public async openNewBrowserPageByClickingOnLink(link: Locator) {
+        Object.keys(this).forEach((key: string) => {
+            if (key !== "browserContext") {
+                (this as any)[key] = undefined;
+            }
+        });
+
+        const [newPage] = await Promise.all([
+            this.browserContext.waitForEvent("page"),
+            link.click()
+        ]);
+        this.page = newPage;
     }
 }

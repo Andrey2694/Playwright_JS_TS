@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "tests": "npx playwright test automationpractice.spec.ts --config=playwright.config.ts"
+    "tests": "npx playwright test automationpracticeTests.spec.ts --config=playwright.config.ts"
   },
   "keywords": [],
   "author": "",

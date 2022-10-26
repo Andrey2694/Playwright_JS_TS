@@ -55,4 +55,15 @@ test.describe("UI tests for automationpractice website", () => {
         await expect(cartPage.orderIsCompleteTitle).toBeVisible();
     });
 
+    test("testing different tabs", async ({ app }) => {
+        await mainPage.goto();
+        await app.openNewBrowserPage();
+        const mainPage2 = app.mainPage;
+        await mainPage2.goto();
+        await mainPage.cartButton.click();
+
+        await app.openNewBrowserPageByClickingOnLink(mainPage.faceBookLink);
+        await expect(app.page.locator("h1[dir='auto'] a", { hasText: "Selenium Framework" })).toBeVisible();
+        await mainPage2.cartButton.click();
+    });
 });

@@ -1,20 +1,14 @@
-import { Page, Locator } from "@playwright/test";
+import { Page } from "@playwright/test";
+import { BasePage } from "./BasePage";
 
-export class MainPage {
-    readonly page: Page;
-    readonly dressButton: Locator;
-    readonly casualDressButton: Locator;
-    readonly cartButton: Locator;
+export class MainPage extends BasePage{
+    readonly dressButton = this.page.locator("//div[@id = 'block_top_menu']/ul/li/a[text() = 'Dresses']");
+    readonly casualDressButton = this.page.locator(".sfHover a", { hasText: "Casual Dresses" });
+    readonly cartButton = this.page.locator("[title = 'View my shopping cart']");
+    readonly faceBookLink = this.page.locator("#social_block .facebook");
 
-    constructor(page: Page) {
-        this.page = page;
-        this.dressButton = page.locator("//div[@id = 'block_top_menu']/ul/li/a[text() = 'Dresses']");
-        this.casualDressButton = page.locator(".sfHover a", { hasText: "Casual Dresses" });
-        this.cartButton = page.locator("[title = 'View my shopping cart']");
-    }
-
-    async goto() {
-        this.page.goto("");
+    constructor (readonly page: Page) {
+        super(page, "");
     }
 
     async openCasualDressPage() {

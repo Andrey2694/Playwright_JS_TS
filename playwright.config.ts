@@ -1,12 +1,11 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
-import dotenv from 'dotenv'
-
+import type { PlaywrightTestConfig } from "@playwright/test";
+import { devices } from "@playwright/test";
+import dotenv from "dotenv";
 dotenv.config();
 
 const config: PlaywrightTestConfig = {
-  globalSetup: require.resolve('./global-setup'),
-  testDir: './tests',
+  // globalSetup: require.resolve("./global-setup"),
+  testDir: "./tests",
   /* Maximum time one test can run for. */
   timeout: 120 * 1000,
   expect: {
@@ -24,18 +23,18 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 1 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: "html",
   // reporter: 'allure-playwright',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
-    trace: 'retain-on-failure',
+    trace: "retain-on-failure",
     headless: true,
     // ignoreHTTPSErrors: true,
-    video: 'retain-on-failure',
-    screenshot: 'only-on-failure',
-    storageState: 'resources/storageState.json'    
+    video: "retain-on-failure",
+    screenshot: "only-on-failure"
+    // storageState: "resources/storageState.json"    
   },
 
   /* Configure projects for major browsers */
@@ -49,15 +48,15 @@ const config: PlaywrightTestConfig = {
     //   },
     // },
     {
-      name: 'mainChrome',
+      name: "mainChrome",
       testMatch: /.*.spec.ts/,
       use: {
-        ...devices['Desktop Chrome'], 
-        baseURL: process.env.URL,
+        ...devices["Desktop Chrome"], 
+        baseURL: process.env.URL
         // viewport: {width: 1920, height: 1080}
-      },
-    },
-  ],
+      }
+    }
+  ]
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   // outputDir: 'test-results/', 

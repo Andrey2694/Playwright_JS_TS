@@ -39,6 +39,6 @@ test.describe("examples work with requests/responses", () => {
             });
         });
         await page.goto("https://demoqa.com/books");
-        await expect(await page.locator(".action-buttons a").innerText()).toBe(json.books[0].title);
+        expect(await page.locator(".action-buttons a").innerText()).toBe(json.books[0].title);
     });
 });
