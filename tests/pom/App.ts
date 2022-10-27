@@ -10,7 +10,7 @@ export class App extends PageProvider {
     public async closeBrowser() {
         await this.page.close();
     }
-
+    
     public async openNewBrowserPage() {
         Object.keys(this).forEach((key: string) => {
             if (key !== "browserContext") {
