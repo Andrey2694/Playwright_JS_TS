@@ -28,3 +28,9 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: snapshots
+          path: tests/ui_test/
+          retention-days: 30
