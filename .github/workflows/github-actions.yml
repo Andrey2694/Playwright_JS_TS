@@ -15,13 +15,10 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      # - uses: falti/dotenv-action@v1.0.0
-      #   with:
-      #     env-file: .env
       - name: Install dependencies
         run: npm ci
       - name: Run your tests
-        run: npx playwright test -g "screenshot comparisons" 
+        run: npx playwright test automationpracticeTests.spec.ts --config=playwright.config.ts
       - uses: actions/upload-artifact@v2
         if: always()
         with:
